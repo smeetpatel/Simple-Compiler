@@ -1,0 +1,7 @@
+program
+{
+	int c;
+	c=a;
+	get(i);
+};
+

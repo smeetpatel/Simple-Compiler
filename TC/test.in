@@ -1,0 +1,18 @@
+class dot
+{
+	int b;
+	int ab()
+	{
+		a=24.03;
+	};
+};
+
+program
+{
+	int c;
+	c=a;
+};
+int abb(int a)
+{
+	c=a;
+};

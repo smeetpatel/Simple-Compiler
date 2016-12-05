@@ -1,0 +1,37 @@
+<prog>	<class><progBody>
+<class>	class id {<vDeclFDef>};|epsilon
+<vDeclFDef>	<type>id<vDFDPrime>|epsilon
+<vDFDPrime>	[ int ];<vDeclFDef>|;<vDeclFDef>|(<fParams>)<funcBody>;<vDeclFDef>
+<progBody>	program<funcBody>;<funcDef>
+<funcHead>	<type>id(<fParams>)
+<funcDef>	<funcHead><funcBody>;|epsilon
+<funcBody>	{<varDecl><statement>}
+<varDecl>	<type>id<arraySize>;<varDecl>|epsilon
+<statement>	<assignStat>;<statement>|if(<expr>)then<statBlock>else<statBlock>;<statement>|for(<type>id<assignOp><expr>;<relExpr>;<assignStat>)<statBlock>;<statement>|get(<variable>);<statement>|put(<expr>);<statement>|return(<expr>);<statement>|epsilon
+<assignStat>	<variable><assignOp><expr>
+<statBlock>	{<statement>}|<statement>|epsilon
+<expr>	<relExpr>
+<relExpr>	<airthExpr><relExpression>
+<relExpression>	<relOp><airthExpr><relExpression>|epsilon
+<airthExpr>	<term><airthExpression>
+<airthExpression>	<addOp><term><airthExpression>|epsilon
+<sign>	+|-
+<term>	<factor><termR>
+<termR>	<multOp><factor><termR>|epsilon
+<factor>	<variable>|int|num|(<airthExpr>)|not<factor>|<sign><factor>
+<variable>	<inest><variablePrePrime>
+<variablePrePrime>	id<variablePrime>|epsilon
+<variablePrime>	<indice>|(<aParams>)|epsilon
+<inest>	id<indice><inestPrime>|epsilon
+<inestPrime>	.|epsilon
+<indice>	[<airthExpr>]|epsilon
+<arraySize>	[ int ]|epsilon
+<type>	int|float|id
+<fParams>	<type>id<arraySize><fParamsTail>|epsilon
+<aParams>	<expr><aParamsTail>|epsilon
+<fParamsTail>	,<type>id<arraySize>|epsilon
+<aParamsTail>	,<expr>|epsilon
+<assignOp>	=
+<relOp>	==|<>|<|>|<=|>=
+<addOp>	+|-|or
+<multOp>	*|/|and

@@ -1,0 +1,22 @@
+class dot
+{
+	int b[10];
+};
+
+program
+{
+	int c;
+	c=a;
+	if(a==b) then
+	{
+		a=8;
+	}
+	else
+	{
+		b=2;
+	};
+};
+int abb(int a)
+{
+	c=a;
+};
