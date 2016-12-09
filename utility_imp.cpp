@@ -284,10 +284,22 @@ bool checkSyntax()
 	int line=1,i=1;
 	pair<string,string>	combination;	//For Searching the map
 	string toBeMatched=inputTable.front();
+	while(toBeMatched=="Newline")
+	{
+		inputTable.pop_front();
+		toBeMatched=inputTable.front();
+		line = line + 1;
+	}
 	inputTable.pop_front();
 	string nextToken=inputTable.front();
+	while(nextToken=="Newline")
+	{
+		nextToken=inputTable[i++];
+	}
+	i=1;
 	string nonTer=isNT(derivationTable.top());
 	string temp,mid;
+	
 	while(nonTer != "$" || toBeMatched!="$")
 	{
 		//match
@@ -449,7 +461,7 @@ bool checkSyntax()
 				else
 				{
 					flag=false;
-					cout<<"Syntax Error"<<endl;
+					cout<<"Syntax Error at line "<<line<<endl;
 					cout<<"\""<<toBeMatched<<"\""<<" unexpected"<<endl;
 				}
 			}
@@ -463,7 +475,7 @@ bool checkSyntax()
 				if(nonTer!=toBeMatched)
 				{
 					flag=false;
-					cout<<"Syntactic Error "<<endl;
+					cout<<"Syntactic Error at line "<<line<<endl;
 					cout<<"\""<<toBeMatched<<"\""<<" unexpected"<<endl;
 					derivationTable.pop();
 					if(toBeMatched=="$")
@@ -477,7 +489,7 @@ bool checkSyntax()
 	}
 	if(inputTable.size()!=0)
 	{
-		cout<<"Syntactic Error from line: "<<lineno<<endl;
+		cout<<"Syntactic Error from line: "<<line<<endl;
 		flag=false;
 	}
 	return flag;
