@@ -17,24 +17,6 @@ int main()
 	unsigned long rvalue;
 	int access;
 
-	ntoken=yylex();	//returns apt number from "header.h"
-	while(ntoken)
-	{
-		if(ntoken==7 || ntoken==16)
-		{
-			cout<<"Error at line: "<<lineno<<endl;
-			cout<<"\t"<<"\""<<yytext<<"\""<<" is "<<arr[ntoken-1]<<endl;
-		}
-		
-		if(ntoken==12 || ntoken==13 || ntoken==14)
-			inputTable.push_back(arr[ntoken-1]);
-		else if(ntoken!=9 && ntoken!=10 && ntoken!=11)
-				inputTable.push_back(yytext);
-		ntoken=yylex();	//read next token
-	}
-	/*above code stores series of tokens into inputTable*/
-	inputTable.push_back("$");	//input string
-	//now add every grammar rule to bst and do needful for parser
 	string line;
 	ifstream filemanip;
 	filemanip.open("grammar.txt",ios::in);
@@ -46,6 +28,27 @@ int main()
 	first_calc(head);	
 	follow_calc(head);
 	parsertable(head);
+	
+	
+	ntoken=yylex();	//returns apt number from "header.h"
+	while(ntoken)
+	{
+		if(ntoken==7 || ntoken==16)
+		{
+			cout<<"Error at line: "<<lineno<<endl;
+			cout<<"\t"<<"\""<<yytext<<"\""<<" is "<<arr[ntoken-1]<<endl;
+		}
+		
+		if(ntoken==12 || ntoken==13 || ntoken==14 || ntoken==11)
+			inputTable.push_back(arr[ntoken-1]);
+		else if(ntoken!=9 && ntoken!=10)
+				inputTable.push_back(yytext);
+		ntoken=yylex();	//read next token
+	}
+	/*above code stores series of tokens into inputTable*/
+	inputTable.push_back("$");	//input string
+	//now add every grammar rule to bst and do needful for parser
+	
 	if(checkSyntax())
 		cout<<"Succesful Parse"<<endl;
 	else

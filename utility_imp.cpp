@@ -281,6 +281,7 @@ void compute_follow(struct grammar *pro,string parent)
 bool checkSyntax()
 {
 	bool flag=true;
+	int line=1,i=1;
 	pair<string,string>	combination;	//For Searching the map
 	string toBeMatched=inputTable.front();
 	inputTable.pop_front();
@@ -302,8 +303,19 @@ bool checkSyntax()
 				derivationTable.push(mid);
 		
 			toBeMatched=inputTable.front();
+			while(toBeMatched=="Newline")
+			{
+				inputTable.pop_front();
+				toBeMatched=inputTable.front();
+				line = line + 1;
+			}
 			inputTable.pop_front();
 			nextToken=inputTable.front();
+			while(nextToken=="Newline")
+			{
+				nextToken=inputTable[i++];
+			}
+			i=1;
 		}
 		//predict
 		else
