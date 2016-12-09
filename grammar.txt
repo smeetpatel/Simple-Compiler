@@ -1,5 +1,5 @@
 <prog>	<class><progBody>
-<class>	class id {<vDeclFDef>};|epsilon
+<class>	class id {<vDeclFDef>};<class>|epsilon
 <vDeclFDef>	<type>id<vDFDPrime>|epsilon
 <vDFDPrime>	[ int ];<vDeclFDef>|;<vDeclFDef>|(<fParams>)<funcBody>;<vDeclFDef>
 <progBody>	program<funcBody>;<funcDef>
