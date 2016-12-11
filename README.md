@@ -7,4 +7,4 @@ Valid lexical units can be known from file "lexicalanalyzer.l" and syntax for th
 
 Test cases are included in subdirectory "TC".
 
-Following the grammar of language, a program can be compiled by following instruction: ./runthis <TC/<file_name>.in.
+Following the grammar of language, a program can be compiled by following instruction: ./runthis <TC/file_name.in
